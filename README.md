@@ -1,1 +1,2 @@
-#App de ciclo de pagamentos desenvolvido com React e Node.
+# payapp-react
+App de ciclo de pagamentos desenvolvido com React e Node.
