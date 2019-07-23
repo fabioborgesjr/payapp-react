@@ -1,8 +1,8 @@
 import React from 'react'
-import '../common/template/dependecies'
-import Header from '../common/components/header/header';
-import Sidebar from '../common/components/sidebar/sidebar';
-import Footer from '../common/components/footer/footer';
+import '../components/template/dependecies'
+import Header from '../components/header/header';
+import Sidebar from '../components/sidebar/sidebar';
+import Footer from '../components/footer/footer';
 
 export default props => (
     <div className='wrapper'>
