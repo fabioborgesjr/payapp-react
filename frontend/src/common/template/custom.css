@@ -1,0 +1,9 @@
+.main-footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
+
+.content-wrapper {
+    padding-inline-start: 10px;
+}
