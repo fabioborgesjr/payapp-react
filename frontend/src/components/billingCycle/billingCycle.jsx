@@ -10,9 +10,11 @@ import TabsHeader from "../tab/tabsHeader";
 import TabHeader from "../tab/tabHeader";
 import TabContent from "../tab/tabContent";
 import { selectTab, showTabs } from "../tab/tabActions";
+import List from "./billingCycleList";
 
 class BillingCycle extends Component {
   componentWillMount() {
+    this.props.selectTab("tabList");
     this.props.showTabs("tabList", "tabCreate");
   }
 
@@ -46,7 +48,7 @@ class BillingCycle extends Component {
             </TabsHeader>
             <TabsContent>
               <TabContent id="tabList">
-                <h1>Lista</h1>
+                <List />
               </TabContent>
               <TabContent id="tabCreate">
                 <h1>Incluir</h1>

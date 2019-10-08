@@ -3,19 +3,18 @@ const initialState = {
   visible: {}
 };
 
-export default (state = initialState, {
-  type,
-  payload
-}) => {
+export default (state = initialState, { type, payload }) => {
   switch (type) {
     case "TAB_SELECTED":
       return {
-        ...state, selected: payload
+        ...state,
+        selected: payload
       };
 
     case "TAB_SHOWED":
       return {
-        ...state, visible: payload
+        ...state,
+        visible: payload
       };
 
     default:
