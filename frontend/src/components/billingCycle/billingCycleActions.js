@@ -10,3 +10,12 @@ export const getList = () => {
     payload: data
   };
 };
+
+export const create = bc => {
+  axios.post(`${URL}/billingCycles`, bc);
+
+  return {
+    type: "NEW_BILLING_CYCLE",
+    payload: bc
+  };
+};
