@@ -6,11 +6,11 @@ import { showTabs, selectTab } from "../../components/tab/tabActions";
 const URL = "http://localhost:3003/api";
 
 export const getList = () => {
-  const { data } = axios.get(`${URL}/billingCycles`);
+  const request = axios.get(`${URL}/billingCycles`);
 
   return {
     type: "BILLING_CYCLES_FETCHED",
-    payload: data
+    payload: request
   };
 };
 
@@ -32,10 +32,5 @@ export const create = bc => {
           toastr.error("Erro", error);
         });
       });
-  };
-
-  return {
-    type: "NEW_BILLING_CYCLE",
-    payload: bc
   };
 };

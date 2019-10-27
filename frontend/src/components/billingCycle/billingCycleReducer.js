@@ -5,7 +5,7 @@ export default (state = initialState, { type, payload }) => {
     case "BILLING_CYCLES_FETCHED":
       return {
         ...state,
-        list: payload
+        list: payload.data
       };
 
     default:
