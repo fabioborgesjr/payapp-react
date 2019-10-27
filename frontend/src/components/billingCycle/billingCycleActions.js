@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toastr } from "react-redux-toastr";
 import { reset as resetForm } from "redux-form";
-import { showTabs, selectTab } from "../../components/tab/tabActions";
+import { showTabs, selectTab } from "../common/tab/tabActions";
 
 const URL = "http://localhost:3003/api";
 
