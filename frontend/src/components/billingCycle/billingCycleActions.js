@@ -15,12 +15,21 @@ export const getList = () => {
   };
 };
 
-export const create = bc => {
+export function create(values) {
+  return submit(values, "post");
+}
+
+export function update(values) {
+  return submit(values, "put");
+}
+
+function submit(values, method) {
   return dispatch => {
-    axios
-      .post(`${URL}/billingCycles`, bc)
+    const id = values._id || "";
+
+    axios[method](`${URL}/billingCycles/${id}`, values)
       .then(resp => {
-        toastr.success("Sucesso", "Operação realizada com sucesso");
+        toastr.success("Sucesso", "Operação realizada com sucesso!");
         dispatch(init());
       })
       .catch(err => {
@@ -29,14 +38,6 @@ export const create = bc => {
         });
       });
   };
-};
-
-export function showUpdate(billingCycle) {
-  return [
-    showTabs("tabUpdate"),
-    selectTab("tabUpdate"),
-    initialize("billingCycleForm", billingCycle)
-  ];
 }
 
 export function init() {
@@ -45,5 +46,13 @@ export function init() {
     selectTab("tabList"),
     getList(),
     initialize("billingCycleForm", INITIAL_VALUES)
+  ];
+}
+
+export function showUpdate(billingCycle) {
+  return [
+    showTabs("tabUpdate"),
+    selectTab("tabUpdate"),
+    initialize("billingCycleForm", billingCycle)
   ];
 }
