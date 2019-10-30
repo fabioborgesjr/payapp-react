@@ -8,6 +8,9 @@ import inputWithLabel from "../common/form/inputWithLabel";
 
 class BillingCycleForm extends Component {
   getField(name, label, cols, placeholder) {
+    const me = this,
+      { readOnly } = me.props;
+
     return (
       <Field
         name={name}
@@ -15,6 +18,7 @@ class BillingCycleForm extends Component {
         label={label}
         cols={cols}
         placeholder={placeholder}
+        readOnly={readOnly}
       />
     );
   }

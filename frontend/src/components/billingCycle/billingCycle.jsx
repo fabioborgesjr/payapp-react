@@ -10,7 +10,7 @@ import TabsHeader from "../common/tab/tabsHeader";
 import TabHeader from "../common/tab/tabHeader";
 import TabContent from "../common/tab/tabContent";
 import { selectTab, showTabs } from "../common/tab/tabActions";
-import { create, update } from "../billingCycle/billingCycleActions";
+import { create, update, remove } from "../billingCycle/billingCycleActions";
 
 import List from "./billingCycleList";
 import Form from "./billingCycleForm";
@@ -66,7 +66,7 @@ class BillingCycle extends Component {
                 <Form onSubmit={props.update} />
               </TabContent>
               <TabContent id="tabDelete">
-                <h1>Excluir</h1>
+                <Form onSubmit={props.remove} readOnly />
               </TabContent>
             </TabsContent>
           </Tabs>
@@ -82,7 +82,8 @@ const mapDispatchToProps = dispatch =>
       selectTab,
       showTabs,
       create,
-      update
+      update,
+      remove
     },
     dispatch
   );

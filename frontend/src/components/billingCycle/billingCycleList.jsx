@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { getList, showUpdate } from "./billingCycleActions";
+import { getList, changeTab } from "./billingCycleActions";
 
 class BillingCycleList extends Component {
   componentWillMount() {
@@ -19,9 +19,15 @@ class BillingCycleList extends Component {
         <td>
           <button
             className="btn btn-warning"
-            onClick={() => this.props.showUpdate(bc)}
+            onClick={() => this.props.changeTab("tabUpdate", bc)}
           >
             <i className="fa fa-pencil"></i>
+          </button>
+          <button
+            className="btn btn-danger"
+            onClick={() => this.props.changeTab("tabDelete", bc)}
+          >
+            <i className="fa fa-trash-o"></i>
           </button>
         </td>
       </tr>
@@ -53,7 +59,7 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       getList,
-      showUpdate
+      changeTab
     },
     dispatch
   );
