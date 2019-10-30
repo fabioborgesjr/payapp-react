@@ -4,12 +4,12 @@ import { connect } from "react-redux";
 
 import ContentHeader from "../content/contentHeader";
 import Content from "../content/content";
-import Tabs from "../tab/tabs";
-import TabsContent from "../tab/tabsContent";
-import TabsHeader from "../tab/tabsHeader";
-import TabHeader from "../tab/tabHeader";
-import TabContent from "../tab/tabContent";
-import { selectTab, showTabs } from "../tab/tabActions";
+import Tabs from "../common/tab/tabs";
+import TabsContent from "../common/tab/tabsContent";
+import TabsHeader from "../common/tab/tabsHeader";
+import TabHeader from "../common/tab/tabHeader";
+import TabContent from "../common/tab/tabContent";
+import { selectTab, showTabs } from "../common/tab/tabActions";
 import { create } from "../billingCycle/billingCycleActions";
 
 import List from "./billingCycleList";
@@ -63,7 +63,7 @@ class BillingCycle extends Component {
                 <Form onSubmit={props.create} />
               </TabContent>
               <TabContent id="tabUpdate">
-                <h1>Alterar</h1>
+                <Form />
               </TabContent>
               <TabContent id="tabDelete">
                 <h1>Excluir</h1>
