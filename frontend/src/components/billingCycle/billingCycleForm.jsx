@@ -1,5 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import { reduxForm, Field } from "redux-form";
+
+import { init } from "./billingCycleActions";
 import inputWithLabel from "../common/form/inputWithLabel";
 
 class BillingCycleForm extends Component {
@@ -13,6 +17,13 @@ class BillingCycleForm extends Component {
         placeholder={placeholder}
       />
     );
+  }
+
+  componentWillMount() {
+    const me = this,
+      props = me.props;
+
+    if (props.resetValues) props.init();
   }
 
   render() {
@@ -30,12 +41,27 @@ class BillingCycleForm extends Component {
           <button type="submit" className="btn btn-primary">
             Submit
           </button>
+          <button
+            type="button"
+            className="btn btn-default"
+            onClick={this.props.init}
+          >
+            Cancelar
+          </button>
         </div>
       </form>
     );
   }
 }
 
-export default reduxForm({ form: "billingCycleForm", destroyOnUnmount: false })(
-  BillingCycleForm
-);
+BillingCycleForm = reduxForm({
+  form: "billingCycleForm",
+  destroyOnUnmount: false
+})(BillingCycleForm);
+
+const mapDispatchToProps = dispatch => bindActionCreators({ init }, dispatch);
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(BillingCycleForm);

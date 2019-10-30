@@ -60,7 +60,7 @@ class BillingCycle extends Component {
                 <List />
               </TabContent>
               <TabContent id="tabCreate">
-                <Form onSubmit={props.create} />
+                <Form onSubmit={props.create} resetValues />
               </TabContent>
               <TabContent id="tabUpdate">
                 <Form />
