@@ -42,8 +42,8 @@ class BillingCycleForm extends Component {
           {me.getField("year", "Ano", "12 4", "Informe o ano")}
         </div>
         <div className="box-footer">
-          <button type="submit" className="btn btn-primary">
-            Submit
+          <button type="submit" className={`btn btn-${this.props.submitClass}`}>
+            {this.props.submitLabel}
           </button>
           <button
             type="button"

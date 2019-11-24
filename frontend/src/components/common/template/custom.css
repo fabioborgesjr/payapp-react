@@ -7,3 +7,11 @@
 .content-wrapper {
     padding-inline-start: 10px;
 }
+
+button {
+    margin-left: 5px;
+}
+
+.table-actions {
+    width: 150px;
+}
