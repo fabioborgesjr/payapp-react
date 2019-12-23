@@ -9,19 +9,19 @@ import TabsContent from "../common/tab/tabsContent";
 import TabsHeader from "../common/tab/tabsHeader";
 import TabHeader from "../common/tab/tabHeader";
 import TabContent from "../common/tab/tabContent";
-import { selectTab, showTabs } from "../common/tab/tabActions";
-import { create, update, remove } from "../billingCycle/billingCycleActions";
+import {
+  init,
+  create,
+  update,
+  remove
+} from "../billingCycle/billingCycleActions";
 
 import List from "./billingCycleList";
 import Form from "./billingCycleForm";
 
 class BillingCycle extends Component {
   componentWillMount() {
-    var me = this,
-      props = me.props;
-
-    props.selectTab("tabList");
-    props.showTabs("tabList", "tabCreate");
+    this.props.init();
   }
 
   render() {
@@ -60,24 +60,26 @@ class BillingCycle extends Component {
                 <List />
               </TabContent>
               <TabContent id="tabCreate">
-                <Form 
+                <Form
                   onSubmit={props.create}
                   submitClass="primary"
                   submitLabel="Incluir"
-                  resetValues 
+                  resetValues
                 />
               </TabContent>
               <TabContent id="tabUpdate">
-                <Form onSubmit={props.update} 
+                <Form
+                  onSubmit={props.update}
                   submitClass="info"
                   submitLabel="Alterar"
                 />
               </TabContent>
               <TabContent id="tabDelete">
-                <Form 
+                <Form
                   onSubmit={props.remove}
+                  readOnly
                   submitClass="danger"
-                  submitLabel="Excluir" 
+                  submitLabel="Excluir"
                 />
               </TabContent>
             </TabsContent>
@@ -91,8 +93,7 @@ class BillingCycle extends Component {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      selectTab,
-      showTabs,
+      init,
       create,
       update,
       remove
@@ -100,7 +101,4 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(BillingCycle);
+export default connect(null, mapDispatchToProps)(BillingCycle);
