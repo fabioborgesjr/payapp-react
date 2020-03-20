@@ -7,6 +7,7 @@ import { init } from "./billingCycleActions";
 import InputWithLabel from "../common/form/inputWithLabel";
 import ItemList from "./itemList";
 import Summary from "./summary";
+import BasicInfo from "./basicInfo";
 
 class BillingCycleForm extends Component {
   getField(name, label, cols, placeholder, readOnly) {
@@ -23,13 +24,20 @@ class BillingCycleForm extends Component {
   }
 
   calculateSummary() {
-     const sum = (t,v) => t + v, credits = this.props.credits.map(c => +c.value || 0),
+    const sum = (t, v) => t + v,
+      credits = this.props.credits.map(c => +c.value || 0),
       debts = this.props.debts.map(c => +c.value || 0);
 
-     return {
-       sumOfCredits: credits.length && credits[0] !== 0 && credits[0] !== {} ? credits.reduce(sum) : 0,
-       sumOfDebts: debts.length && debts[0] !== 0 && debts[0] !== {} ? debts.reduce(sum) : 0
-     }
+    return {
+      sumOfCredits:
+        credits.length && credits[0] !== 0 && credits[0] !== {}
+          ? credits.reduce(sum)
+          : 0,
+      sumOfDebts:
+        debts.length && debts[0] !== 0 && debts[0] !== {}
+          ? debts.reduce(sum)
+          : 0
+    };
   }
 
   componentWillMount() {
@@ -47,10 +55,7 @@ class BillingCycleForm extends Component {
     return (
       <form action="" onSubmit={handleSubmit}>
         <div className="box-body">
-          {me.getField("name", "Nome", "12 4", "Informe o nome", readOnly)}
-          {me.getField("month", "Mês", "12 4", "Informe o mês", readOnly)}
-          {me.getField("year", "Ano", "12 4", "Informe o ano", readOnly)}
-          <Summary credit={sumOfCredits} debt={sumOfDebts} />
+          <BasicInfo getField={me.getField} readOnly={readOnly} />
           <ItemList
             cols="12 6"
             list={credits}
@@ -66,6 +71,7 @@ class BillingCycleForm extends Component {
             legend={"Débitos"}
             showStatus
           />
+          <Summary credit={sumOfCredits} debt={sumOfDebts} />
         </div>
         <div className="box-footer">
           <button type="submit" className={`btn btn-${this.props.submitClass}`}>

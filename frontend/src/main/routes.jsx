@@ -1,13 +1,17 @@
-import React from 'react'
-import { Router, Route, Redirect, hashHistory } from 'react-router'
+import React from "react";
+import { Router, Route, IndexRoute, Redirect, hashHistory } from "react-router";
 
-import Dashboard from '../components/dashboard/dashboard'
-import BillingCycle from '../components/billingCycle/billingCycle';
+import App from "./app";
+import Dashboard from "../components/dashboard/dashboard";
+import BillingCycle from "../components/billingCycle/billingCycle";
+import AuthOrApp from "./authOrApp";
 
 export default props => (
-    <Router history={hashHistory}>
-        <Route path="/" component={Dashboard} />
-        <Route path="/billingCycles" component={BillingCycle} />
-        <Redirect from="*" to="/" />
-    </Router>
-)
+  <Router history={hashHistory}>
+    <Route path="/" component={AuthOrApp}>
+      <IndexRoute component={Dashboard} />
+      <Route path="billingCycles" component={BillingCycle} />
+    </Route>
+    <Redirect from="*" to="/" />
+  </Router>
+);
