@@ -34,7 +34,4 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ selectTab }, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TabHeader);
+export default connect(mapStateToProps, mapDispatchToProps)(TabHeader);

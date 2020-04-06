@@ -103,8 +103,6 @@ class ItemList extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
-
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
